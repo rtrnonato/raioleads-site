@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedido de Leads - Academias & Estúdios SP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -17,6 +17,9 @@
             padding: 20px;
         }
         .form-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        .gradient-border {
+            border-left: 4px solid #dc2626;
+        }
     </style>
 </head>
 <body>
@@ -27,16 +30,28 @@
             <div class="flex items-center justify-between mb-4">
                 <span class="bg-red-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Nicho: Academias e Estúdios</span>
                 <div class="text-right">
-                    <h1 class="text-2xl font-black italic italic leading-none">RAIO<span class="text-red-600">LEADS</span></h1>
+                    <h1 class="text-2xl font-black italic leading-none">RAIO<span class="text-red-600">LEADS</span></h1>
                     <p class="text-[10px] text-gray-400 uppercase tracking-tighter">Explosão de Vendas em SP</p>
                 </div>
             </div>
             <h2 class="text-xl font-bold">Solicite sua Lista Qualificada</h2>
-            <p class="text-gray-400 text-sm mt-2">Dados atualizados de academias e estúdios no estado de São Paulo.</p>
+            <p class="text-gray-400 text-sm mt-2 leading-relaxed">
+                Preencha os dados abaixo. O link de pagamento e a lista final serão enviados diretamente para seu <span class="text-white font-bold text-red-400">E-mail</span> ou <span class="text-white font-bold text-green-400">WhatsApp</span>.
+            </p>
+        </div>
+
+        <!-- Banner de Informação de Entrega -->
+        <div class="bg-red-50 p-4 px-8 border-b border-red-100 flex items-start space-x-3">
+            <div class="bg-red-600 rounded-full p-1 mt-1">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <p class="text-xs text-red-800 font-medium">
+                Verifique sua caixa de entrada e spam após o envio. Entregamos o acesso em até 15 minutos após a confirmação do pagamento.
+            </p>
         </div>
 
         <!-- Formulário Formspree -->
-        <form action="https://formspree.io/f/mzdblpnd" method="POST" class="p-8 space-y-6">
+        <form action="https://formspree.io/f/mzdblpnd" method="POST" class="p-8 space-y-5">
             
             <div class="space-y-4">
                 <!-- Nome -->
@@ -46,19 +61,20 @@
                         class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Email -->
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">E-mail</label>
-                        <input type="email" name="_replyto" required placeholder="contato@empresa.com"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
-                    </div>
-                    <!-- WhatsApp -->
-                    <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">WhatsApp (DDD)</label>
-                        <input type="tel" name="whatsapp" required placeholder="(11) 9XXXX-XXXX"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
-                    </div>
+                <!-- Email (Obrigatório) -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">E-mail para Recebimento</label>
+                    <input type="email" name="_replyto" required placeholder="seuemail@provedor.com"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                    <p class="text-[10px] text-gray-400 mt-1 italic">* Enviaremos o link de pagamento por aqui.</p>
+                </div>
+
+                <!-- WhatsApp (Opcional) -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">WhatsApp (Opcional)</label>
+                    <input type="tel" name="whatsapp" placeholder="(11) 9XXXX-XXXX"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                    <p class="text-[10px] text-gray-400 mt-1 italic">Preencha se preferir receber o arquivo pelo celular.</p>
                 </div>
 
                 <!-- Cidade/Região -->
@@ -70,18 +86,18 @@
 
                 <!-- Seleção de Quantidade -->
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Pacote de Leads</label>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Escolha seu Pacote</label>
                     <select name="quantidade" id="qtySelect" required onchange="toggleCustomQty()"
-                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all cursor-pointer">
-                        <option value="30">30 Leads (R$ 50,00)</option>
-                        <option value="50">50 Leads (R$ 80,00)</option>
-                        <option value="100">100 Leads (R$ 150,00)</option>
-                        <option value="personalizado">Outra quantidade (Sob consulta)</option>
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all cursor-pointer font-medium">
+                        <option value="30">30 Leads — R$ 50,00</option>
+                        <option value="50">50 Leads — R$ 80,00</option>
+                        <option value="100">100 Leads — R$ 150,00</option>
+                        <option value="personalizado">Quantidade Personalizada</option>
                     </select>
                 </div>
 
                 <!-- Campo Personalizado (Escondido por padrão) -->
-                <div id="customQtyWrapper" class="hidden animate-pulse">
+                <div id="customQtyWrapper" class="hidden">
                     <label class="block text-xs font-bold text-red-600 uppercase mb-1">Quantos leads você precisa?</label>
                     <input type="number" id="customQtyInput" name="qtd_personalizada" placeholder="Ex: 250"
                         class="w-full px-4 py-3 bg-red-50 border border-red-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
@@ -92,14 +108,18 @@
             <input type="hidden" name="_subject" value="Novo Pedido: Leads Academias SP">
             <input type="hidden" name="segmento" value="Academias e Estúdios">
 
-            <button type="submit" 
-                class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg shadow-red-200 transform active:scale-95 transition-all uppercase tracking-widest text-sm">
-                Solicitar Lista Agora
-            </button>
+            <div class="pt-4">
+                <button type="submit" 
+                    class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg shadow-red-200 transform active:scale-95 transition-all uppercase tracking-widest text-sm">
+                    Enviar e Receber Pagamento
+                </button>
+            </div>
 
-            <div class="flex items-center justify-center space-x-2 text-gray-400">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
-                <span class="text-[10px] uppercase font-bold tracking-tight">Pagamento via Link Seguro</span>
+            <div class="flex flex-col items-center justify-center space-y-2">
+                <div class="flex items-center space-x-2 text-gray-400">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                    <span class="text-[10px] uppercase font-bold tracking-tight">Ambiente de Pagamento Seguro</span>
+                </div>
             </div>
         </form>
     </div>
