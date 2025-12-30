@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Leads - Academias & Estúdios SP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .form-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-lg w-full bg-white rounded-3xl overflow-hidden form-shadow">
+        <!-- Header Temático -->
+        <div class="bg-slate-900 p-8 text-white">
+            <div class="flex items-center justify-between mb-4">
+                <span class="bg-red-600 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest">Nicho: Academias e Estúdios</span>
+                <div class="text-right">
+                    <h1 class="text-2xl font-black italic italic leading-none">RAIO<span class="text-red-600">LEADS</span></h1>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-tighter">Explosão de Vendas em SP</p>
+                </div>
+            </div>
+            <h2 class="text-xl font-bold">Solicite sua Lista Qualificada</h2>
+            <p class="text-gray-400 text-sm mt-2">Dados atualizados de academias e estúdios no estado de São Paulo.</p>
+        </div>
+
+        <!-- Formulário Formspree -->
+        <form action="https://formspree.io/f/mzdblpnd" method="POST" class="p-8 space-y-6">
+            
+            <div class="space-y-4">
+                <!-- Nome -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Seu Nome</label>
+                    <input type="text" name="nome" required placeholder="Ex: Rodrigo Silva"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">E-mail</label>
+                        <input type="email" name="_replyto" required placeholder="contato@empresa.com"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                    </div>
+                    <!-- WhatsApp -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">WhatsApp (DDD)</label>
+                        <input type="tel" name="whatsapp" required placeholder="(11) 9XXXX-XXXX"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                    </div>
+                </div>
+
+                <!-- Cidade/Região -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Cidade ou Bairro de Interesse (SP)</label>
+                    <input type="text" name="regiao_foco" required placeholder="Ex: São José dos Campos ou Moema/SP"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                </div>
+
+                <!-- Seleção de Quantidade -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Pacote de Leads</label>
+                    <select name="quantidade" id="qtySelect" required onchange="toggleCustomQty()"
+                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all cursor-pointer">
+                        <option value="30">30 Leads (R$ 50,00)</option>
+                        <option value="50">50 Leads (R$ 80,00)</option>
+                        <option value="100">100 Leads (R$ 150,00)</option>
+                        <option value="personalizado">Outra quantidade (Sob consulta)</option>
+                    </select>
+                </div>
+
+                <!-- Campo Personalizado (Escondido por padrão) -->
+                <div id="customQtyWrapper" class="hidden animate-pulse">
+                    <label class="block text-xs font-bold text-red-600 uppercase mb-1">Quantos leads você precisa?</label>
+                    <input type="number" id="customQtyInput" name="qtd_personalizada" placeholder="Ex: 250"
+                        class="w-full px-4 py-3 bg-red-50 border border-red-200 rounded-xl focus:ring-2 focus:ring-red-500 outline-none transition-all">
+                </div>
+            </div>
+
+            <!-- Configurações Extras Formspree -->
+            <input type="hidden" name="_subject" value="Novo Pedido: Leads Academias SP">
+            <input type="hidden" name="segmento" value="Academias e Estúdios">
+
+            <button type="submit" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-4 rounded-xl shadow-lg shadow-red-200 transform active:scale-95 transition-all uppercase tracking-widest text-sm">
+                Solicitar Lista Agora
+            </button>
+
+            <div class="flex items-center justify-center space-x-2 text-gray-400">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+                <span class="text-[10px] uppercase font-bold tracking-tight">Pagamento via Link Seguro</span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleCustomQty() {
+            const select = document.getElementById('qtySelect');
+            const wrapper = document.getElementById('customQtyWrapper');
+            const input = document.getElementById('customQtyInput');
+
+            if (select.value === 'personalizado') {
+                wrapper.classList.remove('hidden');
+                input.required = true;
+                input.focus();
+            } else {
+                wrapper.classList.add('hidden');
+                input.required = false;
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
